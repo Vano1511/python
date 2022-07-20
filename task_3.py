@@ -1,10 +1,36 @@
-# with open('3.txt', 'r', encoding='utf-8') as f:
-#     employees_dict = {line.split()[0]: float(line.split()[1]) for line in f}
-#     print(f'Average salary = {round(sum(employees_dict.values()) / len(employees_dict), 3)}\n'
-#           f'Employees with salary less than 20k {[e[0] for e in employees_dict.items() if e[1] < 20000]}')
+class Cell:
+
+    def __init__(self, size):
+        self.size = size
+
+    def __add__(self, other):
+        return self.size + other.size
+
+    def __sub__(self, other):
+        return self.size - other.size
+
+    def __mul__(self, other):
+        return self.size * other.size
+
+    def __truediv__(self, other):
+        return round(self.size / other.size)
+
+    def make_order(self, step):
+        if self.size > step:
+            full = self.size // step
+            part = (self.size % step) * '*'
+            self.step = step * '*'
+            list = [self.step for i in range(full)]
+            list.append(part)
+        else:
+            list = [self.size * '*']
+        str = '\п'.join(list)
+        return str
 
 
-with open('sallary.txt', 'r') as file:
-    employees_dict = {line.split()[0]: float(line.split()[1]) for line in file}
-    print(f'средняя зарплата = {round(sum(employees_dict.values()) / len(employees_dict), 3)}\n'
-          f'работники с зарплатой менее 20000 {[el[0] for el in employees_dict.items() if el[1] < 20000]}')
+
+
+cell1 = Cell(15)
+cell2 = Cell(6)
+cell3 = Cell(cell2 + cell1)
+print(cell3.make_order(6))
