@@ -1,20 +1,5 @@
-class Clothes:
-
-     def __init__(self, size):
-         self.size = size
-
-class Coat(Clothes):
-    @property
-    def consuption(self):
-        return self.size/6.5 + 0.5
-class Suit(Clothes):
-
-    @property
-    def consuption(self):
-        return self.size*2 + 0.3
-
-size = int(input('введите размер пальто '))
-high = float(input('введите рост костюма в метрах '))
-coat1 = Coat(size)
-suit1 = Suit(high)
-print(f'общий расход равен {round(coat1.consuption+suit1.consuption, 3)} м ткани')
+ixes = ygreks = zets = [0, 1]
+for x in ixes:
+    for y in ygreks:
+        for z in zets:
+            print(f'{x} {y} {z}  -  {not (x or y or z) == (not x) and (not y) and (not z)}')

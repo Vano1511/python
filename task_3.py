@@ -1,36 +1,25 @@
-class Cell:
-
-    def __init__(self, size):
-        self.size = size
-
-    def __add__(self, other):
-        return self.size + other.size
-
-    def __sub__(self, other):
-        return self.size - other.size
-
-    def __mul__(self, other):
-        return self.size * other.size
-
-    def __truediv__(self, other):
-        return round(self.size / other.size)
-
-    def make_order(self, step):
-        if self.size > step:
-            full = self.size // step
-            part = (self.size % step) * '*'
-            self.step = step * '*'
-            list = [self.step for i in range(full)]
-            list.append(part)
-        else:
-            list = [self.size * '*']
-        str = '\п'.join(list)
-        return str
-
-
-
-
-cell1 = Cell(15)
-cell2 = Cell(6)
-cell3 = Cell(cell2 + cell1)
-print(cell3.make_order(6))
+comment = 'введите координаты X и Y через пробел, и я подскажу, где искать эту точку: '
+coordinats = [int(i) for i in input(comment).split()]
+x = coordinats[0]
+y = coordinats[1]
+if x == 0:
+    if y == 0:
+        print('точка лежит в начале координат')
+    elif y < 0:
+        print('точка лежит на оси Y между 3 и 4 четвертью')
+    elif y > 0:
+        print('точка лежит на оси Y между 1 и 2 четвертью')
+elif x > 0:
+    if y == 0:
+        print('точка лежит на оси X между 1 и 4 четвертью')
+    elif y < 0:
+        print('точка лежит в 4 четверти')
+    elif y > 0:
+        print('точка лежит в 1 четверти')
+else:
+    if y == 0:
+        print('точка лежит на оси X между 2 и 3 четвертью')
+    elif y < 0:
+        print('точка лежит в 3 четверти')
+    elif y > 0:
+        print('точка лежит в 2 четверти')
